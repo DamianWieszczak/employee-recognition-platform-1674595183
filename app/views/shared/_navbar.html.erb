@@ -15,6 +15,9 @@
       </ul>
       <ul class="navbar-nav">
         <% if employee_signed_in? %>
+          <li class="nav-item me-2">
+            <%= link_to 'New Kudo', new_kudo_path, class: "btn btn-warning" %>
+          </li>
           <li class="nav-item">
             <%= link_to "Sign Out", destroy_employee_session_path, method: :delete, class: "btn btn-light" %>
           </li>
