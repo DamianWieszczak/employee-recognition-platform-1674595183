@@ -1,13 +1,12 @@
 class KudosController < ApplicationController
-  before_action :set_kudo, only: [:show, :edit, :update, :destroy]
+  before_action :set_kudo, only: %i[show edit update destroy]
   before_action :authenticate_employee!
 
   def index
     @kudos = Kudo.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @kudo = Kudo.new
@@ -28,7 +27,7 @@ class KudosController < ApplicationController
 
   def update
     if @kudo.update(kudo_params)
-      flash[:notice] = "Kudo was successfully updated"
+      flash[:notice] = 'Kudo was successfully updated'
       redirect_to @kudo
     else
       render :edit
@@ -38,21 +37,20 @@ class KudosController < ApplicationController
   def destroy
     @kudo.destroy
     if @kudo.destroy
-      flash[:notice] = "Kudo was successfully deleted"
-      redirect_to root_path
+      flash[:notice] = 'Kudo was successfully deleted'
     else
-      flash[:alert] = "Something went wrong delete operation, please try again"
-      redirect_to root_path
+      flash[:alert] = 'Something went wrong delete operation, please try again'
     end
+    redirect_to root_path
   end
 
   private
 
-    def set_kudo
-      @kudo = Kudo.find(params[:id])
-    end
+  def set_kudo
+    @kudo = Kudo.find(params[:id])
+  end
 
-    def kudo_params
-      params.require(:kudo).permit(:title, :content, :giver_id, :receiver_id)
-    end
+  def kudo_params
+    params.require(:kudo).permit(:title, :content, :giver_id, :receiver_id)
+  end
 end
