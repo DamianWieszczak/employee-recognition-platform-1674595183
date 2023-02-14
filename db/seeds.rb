@@ -7,6 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-5.times do |i|
-  Employee.create(email: "user#{i+1}@example.com", password: "password")
+# 5.times do |i|
+#   Employee.create(email: "user#{i+1}@example.com", password: "password")
+# end
+
+5.times do |i| 
+  Kudo.create!(
+    title: Faker::Adjective.positive,
+    content: Faker::Quote.famous_last_words,
+    receiver: Employee.create!(email: Faker::Internet.email(domain: "example#{i}.com"), password: "password"),
+    giver: Employee.create!(email: Faker::Internet.email(domain: "example#{i+1}.com"), password: "password")
+  )
 end

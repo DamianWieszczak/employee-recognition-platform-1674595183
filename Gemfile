@@ -19,6 +19,7 @@ gem 'webpacker', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
+gem 'faker'
 
 group :development, :test do
   # Debugging tool

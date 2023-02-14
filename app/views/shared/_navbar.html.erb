@@ -10,11 +10,14 @@
           <%= link_to "Home", home_index_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Kudos", "#", class: "nav-link active" %>
+          <%= link_to "Kudos", kudos_path, class: "nav-link active" %>
         </li>
       </ul>
       <ul class="navbar-nav">
         <% if employee_signed_in? %>
+          <li class="nav-item me-2">
+            <%= link_to 'New Kudo', new_kudo_path, class: "btn btn-warning" %>
+          </li>
           <li class="nav-item">
             <%= link_to "Sign Out", destroy_employee_session_path, method: :delete, class: "btn btn-light" %>
           </li>
