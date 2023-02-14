@@ -3,7 +3,7 @@ class KudosController < ApplicationController
   before_action :authenticate_employee!
 
   def index
-    @kudos = Kudo.all
+    @kudos = Kudo.all.order(created_at: :desc)
   end
 
   def show; end
