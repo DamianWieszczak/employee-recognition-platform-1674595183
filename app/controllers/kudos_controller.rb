@@ -14,6 +14,7 @@ class KudosController < ApplicationController
 
   def edit
     return unless current_employee != @kudo.giver
+
     flash[:alert] = 'You are not authorized to perform this operation'
     redirect_to kudos_path
   end
