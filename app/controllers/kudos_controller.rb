@@ -12,7 +12,12 @@ class KudosController < ApplicationController
     @kudo = Kudo.new
   end
 
-  def edit; end
+  def edit
+    if current_employee != @kudo.giver
+      flash[:alert] = 'You are not authorized to perform this operation'
+      redirect_to root_path
+    end
+  end
 
   def create
     @kudo = Kudo.new(kudo_params)
@@ -35,11 +40,11 @@ class KudosController < ApplicationController
   end
 
   def destroy
-    @kudo.destroy
-    if @kudo.destroy
+    if current_employee == @kudo.giver
+      @kudo.destroy
       flash[:notice] = 'Kudo was successfully deleted'
     else
-      flash[:alert] = 'Something went wrong delete operation, please try again'
+      flash[:alert] = 'You are not authorized to perform this operation'
     end
     redirect_to root_path
   end

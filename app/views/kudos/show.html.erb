@@ -14,7 +14,7 @@
       <%= link_to 'Back', kudos_path, class: "btn btn-outline-dark btn-sm" %>
     <% if current_employee == @kudo.giver %>
       <%= link_to 'Edit', edit_kudo_path(@kudo), class: "btn btn-outline-secondary btn-sm" %>
-      <%= link_to 'Destroy', @kudo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
+      <%= link_to 'Delete', @kudo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
     <% end %>
   </div>
 </div>
