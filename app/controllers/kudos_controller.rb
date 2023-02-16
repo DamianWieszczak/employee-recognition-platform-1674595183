@@ -13,7 +13,9 @@ class KudosController < ApplicationController
   end
 
   def edit
-    if current_employee != @kudo.giver # rubocop:disable Style/GuardClause
+    if current_employee == @kudo.giver
+      render :edit
+    else
       flash[:alert] = 'You are not authorized to perform this operation'
       redirect_to kudos_path
     end
