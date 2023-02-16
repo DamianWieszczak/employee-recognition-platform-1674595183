@@ -13,10 +13,10 @@ class KudosController < ApplicationController
   end
 
   def edit
-    return unless current_employee != @kudo.giver
-
-    flash[:alert] = 'You are not authorized to perform this operation'
-    redirect_to kudos_path
+    if current_employee != @kudo.giver # rubocop:disable Style/GuardClause
+      flash[:alert] = 'You are not authorized to perform this operation'
+      redirect_to kudos_path
+    end
   end
 
   def create
@@ -42,7 +42,11 @@ class KudosController < ApplicationController
   def destroy
     if current_employee == @kudo.giver
       @kudo.destroy
-      flash[:notice] = 'Kudo was successfully deleted'
+      if @kudo.destroy
+        flash[:notice] = 'Kudo was successfully deleted'
+      else
+        flash[:alert] = 'Delete Kudo failed'
+      end
     else
       flash[:alert] = 'You are not authorized to perform this operation'
     end
