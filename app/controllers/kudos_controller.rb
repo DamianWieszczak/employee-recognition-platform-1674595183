@@ -3,7 +3,7 @@ class KudosController < ApplicationController
   before_action :authenticate_employee!
 
   def index
-    @kudos = Kudo.all
+    @kudos = Kudo.all.order(created_at: :desc)
   end
 
   def show; end
@@ -12,7 +12,14 @@ class KudosController < ApplicationController
     @kudo = Kudo.new
   end
 
-  def edit; end
+  def edit
+    if current_employee == @kudo.giver
+      render :edit
+    else
+      flash[:alert] = 'You are not authorized to perform this operation'
+      redirect_to kudos_path
+    end
+  end
 
   def create
     @kudo = Kudo.new(kudo_params)
@@ -35,11 +42,15 @@ class KudosController < ApplicationController
   end
 
   def destroy
-    @kudo.destroy
-    if @kudo.destroy
-      flash[:notice] = 'Kudo was successfully deleted'
+    if current_employee == @kudo.giver
+      @kudo.destroy
+      if @kudo.destroy
+        flash[:notice] = 'Kudo was successfully deleted'
+      else
+        flash[:alert] = 'Delete Kudo failed'
+      end
     else
-      flash[:alert] = 'Something went wrong delete operation, please try again'
+      flash[:alert] = 'You are not authorized to perform this operation'
     end
     redirect_to root_path
   end

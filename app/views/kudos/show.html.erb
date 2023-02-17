@@ -1,14 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @kudo.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @kudo.content %>
-</p>
-
-<%= link_to 'Edit', edit_kudo_path(@kudo) %> |
-<%= link_to 'Back', kudos_path %>
+<h1>Kudo</h1><br>
+<div class="card text-center mt-2 mb-2">
+  <div class="card-header">
+    Title: <%= @kudo.title %>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">
+      Content: <%= @kudo.content %>
+    </h6>
+      Receiver: <p class="card-text"><%= @kudo.receiver.email %></p>
+      Giver: <p class="card-text"><%= @kudo.giver.email %></p>
+  </div>
+  <div class="card-footer">
+      <%= link_to 'Back', kudos_path, class: "btn btn-outline-dark btn-sm" %>
+    <% if current_employee == @kudo.giver %>
+      <%= link_to 'Edit', edit_kudo_path(@kudo), class: "btn btn-outline-secondary btn-sm" %>
+      <%= link_to 'Delete', @kudo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
+    <% end %>
+  </div>
+</div>
