@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :kudo do
-    title { 'Kudo Title' }
-    content { 'Kudo Content' }
-    association :giver, factory: :Employee
-    association :receiver, factory: :Employee
+    title { Faker::Company.industry }
+    content { Faker::Quote.famous_last_words }
+    association :giver, factory: :employee
+    association :receiver, factory: :employee
   end
 end
