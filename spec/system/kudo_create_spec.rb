@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Create Kudo test' do
-  let!(:employee) { FactoryBot.create :employee }
-  
+  let!(:employee) { create :employee }
+
   before do
     login_as(employee)
     driven_by(:rack_test)

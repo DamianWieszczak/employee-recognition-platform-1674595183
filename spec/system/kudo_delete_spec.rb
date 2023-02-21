@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Delete Kudo test' do
-  let!(:employee) { FactoryBot.create :employee }
-  let!(:kudo) { FactoryBot.create :kudo, giver: employee }
+  let!(:employee) { create :employee }
+  let!(:kudo) { create :kudo, giver: employee }
 
   before do
     login_as(employee)
