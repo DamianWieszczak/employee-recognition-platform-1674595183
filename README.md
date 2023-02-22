@@ -1,11 +1,9 @@
 # Employee Recognition Platfrom
 
-### Setup
-```
-bin/setup
-```
+The website is available at this <a href="https://wiedam-kudo.herokuapp.com">address</a>. You can use the test account to try out the features of the app.
 
-### How to start the app
+### To test the application, please use the following data
 ```
-rails server
+Login: 'test@example.com'
+Password: 'password'
 ```
