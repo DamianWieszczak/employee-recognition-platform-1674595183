@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'kudos#index'
   get 'home/index', to: 'home#index'
 
-  namespace 'admin' do
+  namespace 'admins' do
     get '/dashboard', to: 'pages#dashboard'
   end
 end

@@ -4,7 +4,7 @@ RSpec.describe 'Create Kudo test' do
   let!(:employee) { create :employee }
 
   before do
-    login_as(employee)
+    login_as(employee, scope: :employee)
     driven_by(:rack_test)
   end
 
