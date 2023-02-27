@@ -22,13 +22,18 @@
             <%= link_to "Sign Out", destroy_employee_session_path, method: :delete, class: "btn btn-light" %>
           </li>
         <% else %>
-          <li class="nav-item me-2">
+          <li class="nav-item mx-2">
             <%= link_to "Sign Up", new_employee_registration_path, class: "btn btn-light" %>
           </li>
           <li class="nav-item">
             <%= link_to "Sign In", new_employee_session_path, class: "btn btn-secondary" %>
           </li>
         <% end %>
+        <ul class="navbar-nav">
+          <li class="nav-item ms-3">
+            <%= link_to 'Admin', admins_dashboard_path, class: "btn btn-outline-danger" %>
+          </li>
+        </ul>
       </ul>
     </div>
   </div>

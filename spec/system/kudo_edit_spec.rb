@@ -4,12 +4,8 @@ RSpec.describe 'Delete Kudo test' do
   let!(:employee) { create :employee }
   let!(:kudo) { create :kudo, giver: employee }
 
-  before do
-    login_as(employee)
-    driven_by(:rack_test)
-  end
-
   it 'Editing Kudo' do
+    login_as(employee, scope: :employee)
     visit root_path
     click_link 'Edit'
     fill_in 'Title', with: 'Kudo Edited Title'

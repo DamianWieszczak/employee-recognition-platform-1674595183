@@ -19,3 +19,5 @@
     giver: Employee.create!(email: Faker::Internet.email(domain: "example#{i+1}.com"), password: "password")
   )
 end
+
+Admin.create!(email: Faker::Internet.email(domain: "admin.com"), password: "password")
