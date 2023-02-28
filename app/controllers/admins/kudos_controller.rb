@@ -9,11 +9,10 @@ module Admins
     def destroy
       if @kudo.destroy
         flash[:notice] = 'Kudo was successfully deleted'
-        redirect_to admins_kudos_path
       else
         flash[:alert] = 'Delete Kudo failed'
-        redirect_to admins_kudos_path
       end
+      redirect_to admins_kudos_path
     end
 
     private
