@@ -10,7 +10,7 @@ class KudosController < ApplicationController
 
   def new
     @kudo = Kudo.new
-    if current_employee.number_of_available_kudos > 0
+    if current_employee.number_of_available_kudos.positive?
       render 'new'
     else
       flash[:alert] = 'You have no more kudos to give'
