@@ -1,0 +1,19 @@
+<h1>Kudos</h1>
+<% @kudos.each do |kudo| %>
+  <div class="card text-center mt-2 mb-2">
+    <div class="card-header">
+      Title: <%= kudo.title %>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">
+        Content: <%= kudo.content %>
+      </h6>
+        Receiver: <p class="card-text"><%= kudo.receiver.email %></p>
+        Giver: <p class="card-text"><%= kudo.giver.email %></p>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Destroy', admins_kudo_path(kudo), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
+    </div>
+  </div>
+  <hr>
+<% end %>
