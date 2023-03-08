@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'No available kudos', type: :system do
-  let(:employee) { create :employee }
+  let!(:employee) { create :employee }
 
-  context 'when user has no kudos here' do
+  context 'when user has spending available kudo' do
     before do
       login_as(employee, scope: :employee)
+      employee.number_of_available_kudos = 1
+      create(:kudo)
       employee.number_of_available_kudos = 0
     end
 
