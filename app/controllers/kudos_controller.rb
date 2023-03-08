@@ -10,6 +10,12 @@ class KudosController < ApplicationController
 
   def new
     @kudo = Kudo.new
+    if current_employee.number_of_available_kudos.positive?
+      render 'new'
+    else
+      flash[:alert] = 'You have no more kudos to give'
+      redirect_to kudos_path
+    end
   end
 
   def edit
@@ -25,6 +31,8 @@ class KudosController < ApplicationController
     @kudo = Kudo.new(kudo_params)
     @kudo.giver_id = current_employee.id
     if @kudo.save
+      @current_employee.number_of_available_kudos -= 1
+      @current_employee.save!
       flash[:notice] = 'Kudo was successfully created'
       redirect_to root_path
     else
