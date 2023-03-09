@@ -1,0 +1,24 @@
+<h1>Editing Employee Account</h1>
+
+<%= form_with(model: [:admins, @employee]) do |form| %>
+  <%= render 'admins/employees/errors', employee: @employee %>
+
+  <div class="field">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_available_kudos, class: "form-label" %>
+    <%= form.text_field :number_of_available_kudos, class: "form-control" %>
+  </div>
+
+  <div class="field mb-2 mt-2">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-dark" %>
+  </div>
+<% end %>

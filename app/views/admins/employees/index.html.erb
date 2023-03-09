@@ -1,0 +1,23 @@
+<h1>Employees List</h1>
+
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Number of available Kudo</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.email %></td>
+        <td><%= employee.number_of_available_kudos %></td>
+        <td><%= link_to "Edit", edit_admins_employee_path(employee), class: "btn btn-outline-warning" %></td>
+        <td><%= link_to "Delete", admins_employee_path(employee), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

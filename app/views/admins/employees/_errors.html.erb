@@ -1,0 +1,10 @@
+<% if employee.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h4>
+    <ul>
+      <% employee.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
