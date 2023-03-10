@@ -16,7 +16,7 @@
         <td><%= employee.email %></td>
         <td><%= employee.number_of_available_kudos %></td>
         <td><%= link_to "Edit", edit_admins_employee_path(employee), class: "btn btn-outline-warning" %></td>
-        <td><%= link_to "Delete", admins_employee_path(employee), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %></td>
+        <td><%= link_to "Delete Employee", admins_employee_path(employee), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -11,7 +11,7 @@ module Admins
     def update
       @employee = Employee.find(params[:id])
       if @employee.update(employee_params)
-        flash[:notice] = "Employee account was successfully updated"
+        flash[:notice] = 'Employee account was successfully updated'
         redirect_to admins_employees_path
       else
         render 'admins/employees/edit'
@@ -25,13 +25,13 @@ module Admins
       else
         flash[:alert] = 'Delete Employee account failed'
       end
-      redirect_to admins_employee_path
+      redirect_to admins_employees_path
     end
 
     private
 
     def employee_params
-      params.require(:employee).permit(:email, :password, :number_of_available_kudos)
+      params.require(:employee).permit(:email, :number_of_available_kudos)
     end
   end
 end
