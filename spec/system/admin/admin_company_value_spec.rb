@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Company Value CRUD actions', type: :system do
-  let!(:admin) { create :admin}
-  let!(:company_value) {create :company_value }
+  let!(:admin) { create :admin }
+  let!(:company_value) { create :company_value }
 
-  context 'CRUD actions' do
+  context 'when using CRUD actions' do
     before do
       login_as(:admin)
     end

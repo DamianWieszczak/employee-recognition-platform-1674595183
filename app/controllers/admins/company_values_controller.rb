@@ -1,6 +1,5 @@
 module Admins
   class CompanyValuesController < AdminsController
-    
     def index
       @company_values = CompanyValue.all
     end
@@ -39,11 +38,10 @@ module Admins
       @company_value = CompanyValue.find(params[:id])
       if @company_value.destroy
         flash[:notice] = 'Company Value was successfully deleted'
-        redirect_to admins_company_values_path
       else
         flash[:alert] = 'Deleting Company Value failed'
-        redirect_to admins_company_values_path
       end
+      redirect_to admins_company_values_path
     end
 
     private
@@ -51,6 +49,5 @@ module Admins
     def company_value_params
       params.require(:company_value).permit(:title)
     end
-
   end
 end
