@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'pages#dashboard'
     resources :kudos
     resources :employees, only: [:index, :edit, :update, :destroy]
+    resources :company_values
   end
 end

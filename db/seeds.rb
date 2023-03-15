@@ -21,3 +21,5 @@
 end
 
 Admin.create!(email: Faker::Internet.email(domain: "admin.com"), password: "password")
+
+CompanyValue.create!([{title: 'Honesty'}, {title: 'Ownership'}, {title: 'Accountability'}, {title: 'Passion'}])
