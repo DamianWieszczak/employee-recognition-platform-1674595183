@@ -1,0 +1,14 @@
+<h1>New Company Value</h1>
+
+<%= form_with(model: [:admins, @company_value]) do |form| %>
+  <%= render 'admins/shared/errors', object: @company_value %>
+
+  <div class="field">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create', class: "btn btn-outline-dark" %>
+  </div>
+<% end %>
