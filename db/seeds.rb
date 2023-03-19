@@ -16,10 +16,11 @@
     title: Faker::Adjective.positive,
     content: Faker::Quote.famous_last_words,
     receiver: Employee.create!(email: Faker::Internet.email(domain: "example#{i}.com"), password: "password"),
-    giver: Employee.create!(email: Faker::Internet.email(domain: "example#{i+1}.com"), password: "password")
+    giver: Employee.create!(email: Faker::Internet.email(domain: "example#{i+1}.com"), password: "password"),
+    company_value_id: CompanyValue.find_by(title: 'Honesty').id
   )
 end
 
-Admin.create!(email: Faker::Internet.email(domain: "admin.com"), password: "password")
+# Admin.create!(email: Faker::Internet.email(domain: "admin.com"), password: "password")
 
-CompanyValue.create!([{title: 'Honesty'}, {title: 'Ownership'}, {title: 'Accountability'}, {title: 'Passion'}])
+# CompanyValue.create!([{title: 'Honesty'}, {title: 'Ownership'}, {title: 'Accountability'}, {title: 'Passion'}])

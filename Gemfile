@@ -20,6 +20,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 gem 'faker'
+gem 'bullet'
 
 group :development, :test do
   # Debugging tool

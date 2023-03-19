@@ -16,6 +16,11 @@
     <%= form.collection_select :receiver_id, Employee.all, :id, :email, class: "form-control" %>
   </div>
 
+  <div class="field mb-2 mt-2">
+    <%= form.label :company_value, class: "form-label" %>
+    <%= form.collection_select :company_value_id, CompanyValue.all, :id, :title, class: "form-control" %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: "btn btn-outline-dark" %>
   </div>
