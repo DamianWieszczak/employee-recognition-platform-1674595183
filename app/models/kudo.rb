@@ -5,4 +5,5 @@ class Kudo < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
+  validates :company_value, presence: true
 end

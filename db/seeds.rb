@@ -11,16 +11,17 @@
 #   Employee.create(email: "user#{i+1}@example.com", password: "password")
 # end
 
+Admin.create!(email: Faker::Internet.email(domain: "admin.com"), password: "password")
+
+CompanyValue.create!([{title: 'Honesty'}, {title: 'Ownership'}, {title: 'Accountability'}, {title: 'Passion'}])
+
 5.times do |i| 
   Kudo.create!(
     title: Faker::Adjective.positive,
     content: Faker::Quote.famous_last_words,
     receiver: Employee.create!(email: Faker::Internet.email(domain: "example#{i}.com"), password: "password"),
     giver: Employee.create!(email: Faker::Internet.email(domain: "example#{i+1}.com"), password: "password"),
-    company_value_id: CompanyValue.find_by(title: 'Honesty').id
+    company_value_id: CompanyValue.all.sample.id
   )
 end
 
-# Admin.create!(email: Faker::Internet.email(domain: "admin.com"), password: "password")
-
-# CompanyValue.create!([{title: 'Honesty'}, {title: 'Ownership'}, {title: 'Accountability'}, {title: 'Passion'}])
