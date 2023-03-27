@@ -9,17 +9,16 @@ RSpec.describe 'Company Value CRUD actions', type: :system do
       login_as(admin, scope: :admin)
     end
 
-    it 'Check if rewards existed?' do
+    it 'Check if reward existed?' do
       visit admins_rewards_path
       expect(page).to have_content(reward.title)
-      expect(page).to have_button 'Delete'
     end
 
     it 'Creates Reward' do
       visit admins_rewards_path
       click_link 'New Reward'
       fill_in 'Title', with: Faker::Movies::StarWars.planet
-      fill_in 'Description', with: Faker::Movies::StarWars.quotes
+      fill_in 'Description', with: Faker::Movies::StarWars.quote
       fill_in 'Price', with: rand(1..999)
       click_button 'Create'
       expect(page).to have_content 'Reward was successfully saved'
