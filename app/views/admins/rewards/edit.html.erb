@@ -1,0 +1,24 @@
+<h1>Editing Reward</h1>
+
+<%= form_with(model: [:admins, @reward]) do |form| %>
+  <%= render 'admins/shared/errors', object: @reward %>
+
+  <div class="field">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price, class: "form-label" %>
+    <%= form.number_field :price, value: number_to_currency(form.object.price.to_f, unit: '$'), step: :any, class: "form-control" %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit 'Update', class: "btn btn-outline-dark" %>
+  </div>
+<% end %>

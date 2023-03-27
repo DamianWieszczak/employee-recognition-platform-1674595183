@@ -15,6 +15,8 @@ Admin.create!(email: Faker::Internet.email(domain: "admin.com"), password: "pass
 
 CompanyValue.create!([{title: 'Honesty'}, {title: 'Ownership'}, {title: 'Accountability'}, {title: 'Passion'}])
 
+Reward.create!(title: Faker::Movies::StarWars.planet, description: Faker::Movies::StarWars.quote, price: rand(1..999))
+
 5.times do |i| 
   Kudo.create!(
     title: Faker::Adjective.positive,

@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :kudos
     resources :employees, only: [:index, :edit, :update, :destroy]
     resources :company_values
+    resources :rewards
   end
 end
