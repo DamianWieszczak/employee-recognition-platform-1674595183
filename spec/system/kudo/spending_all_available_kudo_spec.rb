@@ -12,12 +12,12 @@ RSpec.describe 'No available kudos', type: :system do
     end
 
     it 'can not create kudo via button' do
-      visit kudos_path
+      visit employees_kudos_path
       expect(page).not_to have_link 'New Kudo'
     end
 
     it 'can not create kudo via url visit' do
-      visit '/kudos/new'
+      visit 'employees/kudos/new'
       expect(page).to have_content 'You have no more kudos to give'
     end
   end

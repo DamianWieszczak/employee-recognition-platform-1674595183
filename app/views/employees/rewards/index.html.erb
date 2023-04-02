@@ -4,10 +4,8 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Price</th>
-      <th>Update</th>
-      <th>Delete</th>
+      <th>Action</th>
     </tr>
   </thead>
 
@@ -15,9 +13,8 @@
     <% @rewards.each do |reward| %>
       <tr>
         <td><%= reward.title %></td>
-        <td><%= reward.description %></td>
         <td><%= reward.price %></td>
-        <td><%= link_to "Show", employees_reward_path(reward), class: "btn btn-outline-warning" %></td>
+        <td><%= link_to 'Show', employees_reward_path(reward), class: "btn btn-outline-warning" %></td>
       </tr>
     <% end %>
   </tbody>

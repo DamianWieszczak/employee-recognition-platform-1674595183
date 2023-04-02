@@ -1,15 +1,15 @@
 <h1>Reward</h1><br>
 <div class="card text-center mt-2 mb-2">
   <div class="card-header">
-    Title: <%= reward.title %>
+    Title: <%= @reward.title %>
   </div>
   <div class="card-body">
     <h6 class="card-title">
-      Description: <td><%= reward.description %></td>
+      Description: <td><%= @reward.description %></td>
     </h6>
-      Price: <p class="card-text"><%= reward.price %></p>
+      Price: <p class="card-text"><%= @reward.price %></p>
   </div>
   <div class="card-footer">
-      <%= link_to 'Back', employees_rewads_path, class: "btn btn-outline-dark btn-sm" %>
+      <%= link_to 'Back', employees_rewards_path, class: "btn btn-outline-dark btn-sm" %>
   </div>
 </div>
