@@ -1,4 +1,5 @@
-class KudosController < ApplicationController
+module Employees
+class KudosController < EmployeesController
   before_action :set_kudo, only: %i[show edit update destroy]
   before_action :authenticate_employee!
 
@@ -72,4 +73,5 @@ class KudosController < ApplicationController
   def kudo_params
     params.require(:kudo).permit(:title, :content, :giver_id, :receiver_id, :company_value_id)
   end
+end
 end

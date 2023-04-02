@@ -3,11 +3,11 @@
 Rails.application.routes.draw do
   devise_for :admins, path: 'admins'
   devise_for :employees, path: 'employees'
-  resources :kudos
-
-  root 'kudos#index'
-  get 'home/index', to: 'home#index'
-
+  
+  namespace :employees do
+    resources :kudos
+    resources :rewards, only: [:index, :show]
+  end
   namespace :admins do
     get '/dashboard', to: 'pages#dashboard'
     resources :kudos
@@ -15,4 +15,7 @@ Rails.application.routes.draw do
     resources :company_values
     resources :rewards
   end
+
+  root 'employees/kudos#index'
+  get 'home/index', to: 'home#index'
 end
