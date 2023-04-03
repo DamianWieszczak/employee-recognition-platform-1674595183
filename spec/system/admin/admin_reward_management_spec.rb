@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Company Value CRUD actions', type: :system do
+RSpec.describe 'Reward CRUD actions', type: :system do
   let!(:admin) { create :admin }
   let!(:reward) { create :reward }
 
