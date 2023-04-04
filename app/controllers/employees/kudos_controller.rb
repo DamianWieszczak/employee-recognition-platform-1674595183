@@ -34,6 +34,8 @@ module Employees
       if @kudo.save
         @current_employee.number_of_available_kudos -= 1
         @current_employee.save!
+        @kudo.receiver.number_of_earned_points += 10
+        @kudo.receiver.save!
         flash[:notice] = 'Kudo was successfully created'
         redirect_to root_path
       else
@@ -54,6 +56,8 @@ module Employees
       if current_employee == @kudo.giver
         @kudo.destroy
         if @kudo.destroy
+          @kudo.receiver.number_of_earned_points -= 10
+          @kudo.receiver.save!
           flash[:notice] = 'Kudo was successfully deleted'
         else
           flash[:alert] = 'Delete Kudo failed'
