@@ -18,6 +18,9 @@
       </ul>
       <ul class="navbar-nav">
         <% if employee_signed_in? %>
+          <li class="nav-item mt-2 me-2">
+            <p class="badge rounded-pill bg-secondary">Your Earned Points: {<%= current_employee.number_of_earned_points %>}</p>
+          </li>
           <% if current_employee.number_of_available_kudos > 0 %>
             <li class="nav-item mt-2 me-2">
               <p class="badge rounded-pill bg-secondary">Your available Kudos: {<%= current_employee.number_of_available_kudos %>}</p>

@@ -31,12 +31,13 @@ module Employees
     def create
       @kudo = Kudo.new(kudo_params)
       @kudo.giver_id = current_employee.id
-      if @kudo.save
-        @current_employee.number_of_available_kudos -= 1
-        @current_employee.save!
+      ActiveRecord::Base.transaction do
+        @kudo.save!
+        @current_employee.update!(number_of_available_kudos: @current_employee.number_of_available_kudos -= 1)
+        @kudo.receiver.update!(number_of_earned_points: @kudo.receiver.number_of_earned_points += 10)
         flash[:notice] = 'Kudo was successfully created'
         redirect_to root_path
-      else
+      rescue ActiveRecord::RecordInvalid
         render :new
       end
     end
@@ -52,11 +53,12 @@ module Employees
 
     def destroy
       if current_employee == @kudo.giver
-        @kudo.destroy
-        if @kudo.destroy
+        ActiveRecord::Base.transaction do
+          @kudo.destroy!
+          @kudo.receiver.update!(number_of_earned_points: @kudo.receiver.number_of_earned_points -= 10)
           flash[:notice] = 'Kudo was successfully deleted'
-        else
-          flash[:alert] = 'Delete Kudo failed'
+        rescue ActiveRecord::RecordInvalid
+          flash[:alert] = 'Kudo deletion failed'
         end
       else
         flash[:alert] = 'You are not authorized to perform this operation'
