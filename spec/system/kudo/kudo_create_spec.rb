@@ -12,8 +12,8 @@ RSpec.describe 'Create Kudo test' do
     fill_in 'Content', with: Faker::Quote.famous_last_words
     page.select company_value.title
     click_button 'Create Kudo'
-    employee.number_of_earned_points = 10
+    employee.number_of_earned_points += 10
     expect(page).to have_content 'Kudo was successfully created'
-    expect(page).to have_content 'Your Earned Points: {10}'
+    expect(page).to have_content 'Your Earned Points: {70}'
   end
 end

@@ -19,5 +19,12 @@ RSpec.describe 'Reward management actions for employee', type: :system do
       click_link 'Show'
       expect(page).to have_content(reward.description)
     end
+
+    it 'Checks the buy action and if the number of points decreases after the purchase' do
+      visit employees_rewards_path
+      click_link 'Buy'
+      expect(page).to have_content 'You have successfully purchased a reward'
+      expect(page).to have_content(employee.number_of_earned_points - reward.price.to_i)
+    end
   end
 end
