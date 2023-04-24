@@ -3,7 +3,7 @@ module Employees
     def index
       render :index, locals: { orders: Order.all }
     end
-    
+
     def create
       reward = Reward.find(params[:reward])
       if current_employee.number_of_earned_points < reward.price
