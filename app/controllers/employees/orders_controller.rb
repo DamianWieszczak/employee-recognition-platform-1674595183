@@ -12,6 +12,7 @@ module Employees
       else
         ActiveRecord::Base.transaction do
           order = Order.new(employee: current_employee, reward: reward)
+          order.price = order.reward.price
           order.save!
           current_employee.update!(number_of_earned_points: current_employee.number_of_earned_points - reward.price)
           flash[:notice] = 'You have successfully purchased a reward'
