@@ -53,7 +53,7 @@ RSpec.describe 'Reward CRUD actions', type: :system do
       click_button 'Update'
       login_as(employee, scope: :employee)
       visit employees_orders_path
-      expect(page).to have_content employee_order_price 
+      expect(page).to have_content employee_order_price
     end
   end
 end
