@@ -15,6 +15,9 @@
         <li class="nav-item">
           <%= link_to "Rewards", employees_rewards_path, class: "nav-link active" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "|My Rewards|", employees_orders_path, class: "nav-link active" %>
+        </li>
       </ul>
       <ul class="navbar-nav">
         <% if employee_signed_in? %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :employees do
     resources :kudos
     resources :rewards, only: [:index, :show]
-    resources :orders, only: [:create]
+    resources :orders, only: [:index, :create]
   end
   namespace :admins do
     get '/dashboard', to: 'pages#dashboard'
