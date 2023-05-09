@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   namespace :admins do
     get '/dashboard', to: 'pages#dashboard'
     resources :kudos
-    resources :employees, only: [:index, :edit, :update, :destroy]
+    resources :employees, only: [:index, :edit, :update, :destroy] do
+      resources :orders, only: [:index]
+    end
     resources :company_values
     resources :rewards
   end
