@@ -2,7 +2,7 @@ module Admins
   class OrdersController < AdminsController
     def index
       @employee = Employee.find(params[:employee_id])
-      @orders = Order.all.includes(:employee).order(:status: :asc)
+      @orders = Order.all.includes(:employee).order(status: :asc)
     end
 
     def update
@@ -12,7 +12,7 @@ module Admins
       else
         flash[:alert] = "Delivery order failed!"
       end
-      redirect_to admins_employees_orders_path
+      redirect_to admins_employee_orders_path
     end
 
     private
