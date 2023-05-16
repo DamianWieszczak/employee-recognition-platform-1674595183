@@ -14,11 +14,5 @@ module Admins
       end
       redirect_to admins_employee_orders_path
     end
-
-    private
-
-    def employee_params
-      params.require(:employe).permit(:email)
-    end
   end
 end

@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :employees, only: [:index, :edit, :update, :destroy] do
       resources :orders, only: [:index, :update]
     end
+    namespace :employees do
+      resources :orders, only: [:index, :update]
+    end
     resources :company_values
     resources :rewards
   end

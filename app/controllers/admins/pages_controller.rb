@@ -1,5 +1,5 @@
 module Admins
-  class PagesController < Admins::AdminsController
+  class PagesController < AdminsController
     def dashboard; end
   end
 end
