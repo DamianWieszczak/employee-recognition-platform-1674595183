@@ -8,9 +8,9 @@ module Admins
     def update
       @order = Order.find(params[:id])
       if @order.update(status: 1)
-        flash[:notice] = "Order was successfully delivered to employee"
+        flash[:notice] = 'Order was successfully delivered to employee'
       else
-        flash[:alert] = "Delivery order failed!"
+        flash[:alert] = 'Delivery order failed!'
       end
       redirect_to admins_employee_orders_path
     end
