@@ -1,5 +1,5 @@
-<h1>Listing of employee orders</h1>
 
+<h1>Listing of orders to deliver</h1>
 <table class="table table-dark table-striped">
   <thead>
     <tr>
@@ -19,7 +19,7 @@
         <td><%= order.created_at %></td>
         <td><%= order.price %></td>
         <% if order.status == 'not_delivered' %>
-          <td><%= link_to 'Deliver',admins_employee_order_path(@employee, order), method: :patch, data: {confirm: 'Are you sure you want to deliver this reward ?'}, 
+          <td><%= link_to 'Deliver',admins_employees_order_path(order), method: :patch, data: {confirm: 'Are you sure you want to deliver this reward ?'}, 
             class: 'btn btn-success' %></td>
         <% else %>
           <td><%= link_to 'Delivered', '#', class: "btn btn-secondary" %></td>

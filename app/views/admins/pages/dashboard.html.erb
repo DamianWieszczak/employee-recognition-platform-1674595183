@@ -7,3 +7,7 @@
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
 </div>
+
+<div class="d-grid gap-2">
+  <%= link_to "Deliveries - { Number of waiting #{Order.where(status:0).count} }", admins_employees_orders_path, method: :get, class: "btn btn-primary" %>
+</div>
