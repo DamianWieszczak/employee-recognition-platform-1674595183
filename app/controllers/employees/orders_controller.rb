@@ -1,7 +1,15 @@
 module Employees
   class OrdersController < EmployeesController
     def index
-      render :index, locals: { orders: Order.all }
+      orders = case params[:status]
+      when 'delivered'
+        Order.delivered
+      when 'not_delivered'
+        Order.not_delivered
+      else
+        Order.all
+      end
+      render :index, locals: { orders: }
     end
 
     def create
