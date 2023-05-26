@@ -3,5 +3,6 @@ FactoryBot.define do
     employee
     reward
     price { 0 }
+    status { 0 }
   end
 end

@@ -2,13 +2,13 @@ module Employees
   class OrdersController < EmployeesController
     def index
       orders = case params[:status]
-      when 'delivered'
-        Order.delivered
-      when 'not_delivered'
-        Order.not_delivered
-      else
-        Order.all
-      end
+               when 'delivered'
+                 Order.delivered
+               when 'not_delivered'
+                 Order.not_delivered
+               else
+                 Order.all
+               end
       render :index, locals: { orders: }
     end
 
@@ -19,7 +19,7 @@ module Employees
         redirect_to employees_rewards_path
       else
         ActiveRecord::Base.transaction do
-          order = Order.new(employee: current_employee, reward: reward)
+          order = Order.new(employee: current_employee, reward:)
           order.price = order.reward.price
           order.save!
           current_employee.update!(number_of_earned_points: current_employee.number_of_earned_points - reward.price)
