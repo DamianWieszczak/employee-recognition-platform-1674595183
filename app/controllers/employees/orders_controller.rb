@@ -1,14 +1,9 @@
 module Employees
   class OrdersController < EmployeesController
     def index
-      orders = case params[:status]
-               when 'delivered'
-                 Order.delivered
-               when 'not_delivered'
-                 Order.not_delivered
-               else
-                 Order.all
-               end
+      orders = Order.includes(:reward, :employee).order(status: :asc)
+      orders = orders.filter_by_status(params[:status]) if params[:status]
+
       render :index, locals: { orders: }
     end
 
