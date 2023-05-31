@@ -1,7 +1,10 @@
 module Employees
   class OrdersController < EmployeesController
     def index
-      render :index, locals: { orders: Order.all }
+      orders = Order.includes(:reward, :employee).order(status: :asc)
+      orders = orders.filter_by_status(params[:status]) if params[:status]
+
+      render :index, locals: { orders: }
     end
 
     def create
@@ -11,7 +14,7 @@ module Employees
         redirect_to employees_rewards_path
       else
         ActiveRecord::Base.transaction do
-          order = Order.new(employee: current_employee, reward: reward)
+          order = Order.new(employee: current_employee, reward:)
           order.price = order.reward.price
           order.save!
           current_employee.update!(number_of_earned_points: current_employee.number_of_earned_points - reward.price)
