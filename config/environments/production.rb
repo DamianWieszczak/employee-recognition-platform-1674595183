@@ -56,6 +56,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -110,4 +111,14 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  ActionMailer::Base.smtp_settings = {
+    user_name: 'apikey'
+    password: Rails.application.credentials.dig(:sendgrid, :api_key)
+    domain: 'https://wiedam-kudo.herokuapp.com/',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 end
