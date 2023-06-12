@@ -8,6 +8,7 @@ module Admins
       def update
         @order = Order.find(params[:id])
         if @order.update(status: 1)
+          OrderMailer.with(order: @order).confirmation_mail.deliver_later
           flash[:notice] = 'Order was successfully delivered to employee'
         else
           flash[:alert] = 'Delivery order failed!'
