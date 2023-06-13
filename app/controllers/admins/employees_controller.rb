@@ -30,13 +30,16 @@ module Admins
           Employee.find_each do |employee|
             employee.update!(number_of_available_kudos: employee.number_of_available_kudos + new_amount_of_kudos)
           end
-        flash[:notice] = "Successfully added the specified amount of kudos for each employee"
-        redirect_to admins_dashboard_path
+          flash[:notice] = 'Successfully added the specified amount of kudos for each employee'
+          redirect_to admins_dashboard_path
 
         rescue ActiveRecord::RecordInvalid
           flash[:alert] = "It's possible to only add kudos from 1 to 20 for each employee"
           render 'add_kudos_to_all'
         end
+      else 
+        flash[:alert] = "It's possible to only add kudos from 1 to 20 for each employee"
+        render 'add_kudos_to_all'
       end
     end
 
