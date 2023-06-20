@@ -1,25 +1,3 @@
 <h1>Employees List</h1>
 
-<table class="table table-dark table-striped">
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Number of available Kudo</th>
-      <th>Update</th>
-      <th>Delete</th>
-      <th>Orders</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee.email %></td>
-        <td><%= employee.number_of_available_kudos %></td>
-        <td><%= link_to "Edit", edit_admins_employee_path(employee), class: "btn btn-outline-warning" %></td>
-        <td><%= link_to "Delete Employee", admins_employee_path(employee), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %></td>
-        <td><%= link_to "Show Employee Orders", admins_employee_orders_path(employee), class: "btn btn-outline-secondary" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "employees_table.html.erb" %>

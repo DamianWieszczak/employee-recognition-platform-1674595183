@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   end
   namespace :admins do
     get '/dashboard', to: 'pages#dashboard'
+    
+    get 'add_kudos_to_all', to: 'employees#edit_kudos_to_all'
+    patch 'add_kudos_to_all', to: 'employees#add_kudos_to_all'
     resources :kudos
     resources :employees, only: [:index, :edit, :update, :destroy] do
       resources :orders, only: [:index, :update]
