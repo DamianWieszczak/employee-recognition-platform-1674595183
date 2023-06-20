@@ -37,9 +37,6 @@ module Admins
           flash[:alert] = "It's possible to only add kudos from 1 to 20 for each employee"
           render 'add_kudos_to_all'
         end
-      else
-        flash[:alert] = "It's possible to only add kudos from 1 to 20 for each employee"
-        render 'add_kudos_to_all'
       end
     end
 
