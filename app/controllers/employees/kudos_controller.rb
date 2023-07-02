@@ -56,7 +56,7 @@ module Employees
     end
 
     def destroy
-      auhtorize @kudo
+      authorize @kudo
       if current_employee == @kudo.giver
         ActiveRecord::Base.transaction do
           @kudo.destroy!
