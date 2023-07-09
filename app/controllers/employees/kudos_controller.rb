@@ -20,6 +20,7 @@ module Employees
     end
 
     def edit
+      authorize @kudo
       if current_employee == @kudo.giver
         render :edit
       else
@@ -43,15 +44,19 @@ module Employees
     end
 
     def update
+      authorize @kudo
       if @kudo.update(kudo_params)
         flash[:notice] = 'Kudo was successfully updated'
         redirect_to employees_kudos_path(@kudo)
       else
+        flash[:notice] = 'The time to edit/delete kudo has passed'
+        rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
         render :edit
       end
     end
 
     def destroy
+      authorize @kudo
       if current_employee == @kudo.giver
         ActiveRecord::Base.transaction do
           @kudo.destroy!
@@ -65,6 +70,8 @@ module Employees
       end
       redirect_to root_path
     end
+
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
     private
 
