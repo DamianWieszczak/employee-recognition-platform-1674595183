@@ -48,7 +48,7 @@ module Employees
       if @kudo.update(kudo_params)
         flash[:notice] = 'Kudo was successfully updated'
         redirect_to employees_kudos_path(@kudo)
-      elsif Time.current - kudo.created_at > 5.minutes
+      else
         flash[:notice] = 'The time to edit/delete kudo has passed'
         rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
         render :edit
