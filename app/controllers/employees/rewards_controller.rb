@@ -1,7 +1,7 @@
 module Employees
   class RewardsController < EmployeesController
     def index
-      @rewards = Reward.all
+      @pagy, @rewards = pagy(Reward.all, items: 3)
     end
 
     def show

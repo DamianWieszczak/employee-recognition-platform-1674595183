@@ -22,6 +22,7 @@ gem 'bullet'
 gem 'devise'
 gem 'faker'
 gem 'pundit'
+gem 'pagy', '~> 6.0'
 
 group :development, :test do
   # Debugging tool

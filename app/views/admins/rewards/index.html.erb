@@ -25,3 +25,5 @@
 </table>
 
 <%= link_to 'New Reward', new_admins_reward_path, class: "btn btn-warning" %>
+
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
