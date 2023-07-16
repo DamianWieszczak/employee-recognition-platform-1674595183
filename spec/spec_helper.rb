@@ -94,4 +94,5 @@ RSpec.configure do |config|
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
   require 'capybara/rspec'
+  require "pundit/rspec"
 end
