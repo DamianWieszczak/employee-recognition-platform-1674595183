@@ -7,8 +7,18 @@ RSpec.describe 'Employee filtering actions', type: :system do
   it 'displays 1 reward on the second page' do
     login_as(employee, scope: :employee)
     visit employees_rewards_path
-    click_link 'Next'
-    expect(page).to have_current_path("#{employees_rewards_path}?page=2")
-    expect(page).to have_content(Reward.last.title, count: 1)
+
+    within('tbody') do
+      expect(page).to have_selector('tr', count: 3)
+    end
+
+    within('.pagination') do
+      click_link 'Next'
+      expect(page).to have_current_path("#{employees_rewards_path}?page=2")
+    end
+
+    within('tbody') do
+      expect(page).to have_selector('tr', count: 1)
+    end
   end
 end
