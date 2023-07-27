@@ -5,6 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Price</th>
+      <th>Category</th>
       <th colspan="2">Actions</th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= reward.title %></td>
         <td><%= reward.price %></td>
+        <td><%= reward.category.title %></td>
         <td><%= link_to 'Show', employees_reward_path(reward), class: "btn btn-outline-warning" %></td>
         <td><%= link_to 'Buy', employees_orders_path(reward: reward), method: :post, class: "btn btn-outline-success" %></td>
       </tr>

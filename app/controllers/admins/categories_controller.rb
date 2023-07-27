@@ -36,7 +36,8 @@ module Admins
 
     def destroy
       @category = Category.find(params[:id])
-      if @category.destroy        
+      if @category.rewards.empty?
+        @category.destroy
         flash[:notice] = 'Category was successfully deleted'
       else
         flash[:alert] = 'Deleting Category failed'

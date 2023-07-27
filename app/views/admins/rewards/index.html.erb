@@ -17,9 +17,7 @@
       <tr>
         <td><%= reward.title %></td>
         <td><%= reward.description %></td>
-        <% reward.categories.each do |category| %>
-          <td><%= category.title %></td>
-        <% end %>
+        <td><%= reward.category.title %></td>
         <td><%= reward.price %></td>
         <td><%= link_to "Edit", edit_admins_reward_path(reward), class: "btn btn-outline-warning" %></td>
         <td><%= link_to "Delete", admins_reward_path(reward), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %></td>

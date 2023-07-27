@@ -1,4 +1,3 @@
 class Category < ApplicationRecord
-  has_many :category_rewards
-  has_many :rewards, through: :category_rewards
+  has_many :rewards, dependent: :restrict_with_exception
 end

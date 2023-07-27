@@ -3,5 +3,6 @@ FactoryBot.define do
     title { Faker::Movies::StarWars.planet }
     description { Faker::Movies::StarWars.quote }
     price { rand(1..50) }
+    category
   end
 end

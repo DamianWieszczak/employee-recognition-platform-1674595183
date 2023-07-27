@@ -23,6 +23,7 @@ RSpec.describe 'Reward CRUD actions', type: :system do
       fill_in 'Price', with: rand(1..999)
       click_button 'Create'
       expect(page).to have_content 'Reward was successfully saved'
+      expect(page).to have_content reward.category.title
     end
 
     it 'Check edit function' do
