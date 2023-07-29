@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @categories.each do |category| %>
+    <% categories.each do |category| %>
       <tr>
         <td><%= category.title %></td>
         <td><%= link_to "Edit", edit_admins_category_path(category), class: "btn btn-outline-warning" %></td>
