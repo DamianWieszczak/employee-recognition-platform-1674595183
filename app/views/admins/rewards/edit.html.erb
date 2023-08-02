@@ -18,6 +18,11 @@
     <%= form.number_field :price, value: number_to_currency(form.object.price.to_f, unit: '$'), step: :any, class: "form-control" %>
   </div>
   
+  <div class="form-check">
+    <%= form.label :categories, class: "form-check-label" %>
+    <%= form.collection_select(:category_id, Category.all, :id, :title) %>
+  </div>
+  
   <div class="actions">
     <%= form.submit 'Update', class: "btn btn-outline-dark" %>
   </div>

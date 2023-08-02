@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
     resources :company_values
     resources :rewards
+    resources :categories
   end
 
   root 'employees/kudos#index'
