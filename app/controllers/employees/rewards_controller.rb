@@ -1,7 +1,7 @@
 module Employees
   class RewardsController < EmployeesController
     def index
-      @pagy, @rewards = pagy(Reward.all, items: 3)
+      @pagy, @rewards = pagy(Reward.includes(:category).all, items: 3)
     end
 
     def show
@@ -11,7 +11,7 @@ module Employees
     private
 
     def set_reward
-      params.require(:reward).permit(:title, :description, :price)
+      params.require(:reward).permit(:title, :description, :price, :category_id)
     end
   end
 end

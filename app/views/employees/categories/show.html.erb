@@ -1,0 +1,23 @@
+<h1>Rewards for the category: <%= category.title %></h1>
+
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% category.rewards.each do |reward| %>
+      <tr>
+        <td><%= reward.title %></td>
+        <td><%= reward.description %></td>
+        <td><%= reward.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to rewards', employees_rewards_path %>
