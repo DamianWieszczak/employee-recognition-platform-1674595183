@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :kudos
     resources :rewards, only: [:index, :show]
     resources :orders, only: [:index, :create]
+    get 'rewards/category/:id', to: 'categories#show', as: 'reward_category'
   end
+  
   namespace :admins do
     get '/dashboard', to: 'pages#dashboard'
     
