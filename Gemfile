@@ -24,6 +24,7 @@ gem 'faker'
 gem 'pagy', '~> 6.0'
 gem 'pundit'
 gem 'active_storage_validations'
+gem 'cloudinary'
 
 group :development, :test do
   # Debugging tool
