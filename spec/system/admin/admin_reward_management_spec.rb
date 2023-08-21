@@ -15,15 +15,29 @@ RSpec.describe 'Reward CRUD actions', type: :system do
       expect(page).to have_content(reward.title)
     end
 
-    it 'Creates Reward' do
+    it 'Creates Reward with valid attachment' do
       visit admins_rewards_path
       click_link 'New Reward'
       fill_in 'Title', with: Faker::Movies::StarWars.planet
       fill_in 'Description', with: Faker::Movies::StarWars.quote
       fill_in 'Price', with: rand(1..999)
+      attach_file 'Image', Rails.root.join('public/rails.png')
       click_button 'Create'
       expect(page).to have_content 'Reward was successfully saved'
       expect(page).to have_content reward.category.title
+      reward = Reward.last
+      expect(reward.image).to be_attached
+    end
+
+    it 'Creates Reward with invalid attachment' do
+      visit admins_rewards_path
+      click_link 'New Reward'
+      fill_in 'Title', with: Faker::Movies::StarWars.planet
+      fill_in 'Description', with: Faker::Movies::StarWars.quote
+      fill_in 'Price', with: rand(1..999)
+      attach_file 'Image', Rails.root.join('public/gem.gif')
+      click_button 'Create'
+      expect(page).to have_content 'Image has an invalid content type'
     end
 
     it 'Check edit function' do
