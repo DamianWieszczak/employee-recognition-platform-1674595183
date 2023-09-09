@@ -12,5 +12,6 @@ RSpec.describe Reward, type: :model do
     it { is_expected.to validate_presence_of(:price) }
     it { is_expected.to validate_numericality_of(:price), is_greater_than_or_equal_to: 1 }
     it { is_expected.to validate_numericality_of(:price), lesser_than: 1 }
+    it { is_expected.to have_one_attached(:image) }
   end
 end

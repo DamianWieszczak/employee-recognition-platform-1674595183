@@ -4,8 +4,9 @@
     Title: <%= @reward.title %>
   </div>
   <div class="card-body">
+    <%= image_tag @reward.image.variant(resize_to_limit: [100, 100]) if @reward.image.attached? %>
     <h6 class="card-title">
-      Description: <td><%= @reward.description %></td>
+      Description: <p><%= @reward.description %></p>
     </h6>
       Price: <p class="card-text"><%= @reward.price %></p>
   </div>

@@ -11,7 +11,7 @@ module Employees
     private
 
     def set_reward
-      params.require(:reward).permit(:title, :description, :price, :category_id)
+      params.require(:reward).permit(:title, :description, :price, :category_id, :image)
     end
   end
 end

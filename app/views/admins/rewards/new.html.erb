@@ -23,6 +23,11 @@
     <%= form.collection_select(:category_id, Category.all, :id, :title) %>
   </div>
 
+  <div>
+    <%= form.label :image, class: "form-label" %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
   <div class="actions">
     <%= form.submit 'Create', class: "btn btn-outline-dark" %>
   </div>
