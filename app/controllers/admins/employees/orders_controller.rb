@@ -3,6 +3,13 @@ module Admins
     class OrdersController < AdminsController
       def index
         @orders = Order.all.includes(:employee).order(status: :asc)
+        respond_to do |format|
+          format.html
+          format.csv do
+            filename = ['Orders', Date.today.to_s].join(' ')
+            send_data Order.to_csv, filename:, content_type: 'text/csv'
+          end
+        end
       end
 
       def update
