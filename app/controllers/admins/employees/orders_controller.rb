@@ -12,7 +12,6 @@ module Admins
         end
       end
 
-
       def update
         @order = Order.find(params[:id])
         if @order.update(status: 1)
