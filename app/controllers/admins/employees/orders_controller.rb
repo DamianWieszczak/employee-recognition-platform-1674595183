@@ -6,11 +6,12 @@ module Admins
         respond_to do |format|
           format.html
           format.csv do
-            filename = ['Orders', Date.today.to_s].join(' ')
+            filename = ['Orders - ', Time.zone.today.to_s].join(' ')
             send_data Order.to_csv, filename:, content_type: 'text/csv'
           end
         end
       end
+
 
       def update
         @order = Order.find(params[:id])
