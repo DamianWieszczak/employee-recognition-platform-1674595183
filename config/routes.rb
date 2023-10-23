@@ -24,7 +24,12 @@ Rails.application.routes.draw do
       resources :orders, only: [:index, :update]
     end
     resources :company_values
-    resources :rewards
+    resources :rewards do
+      collection do
+        post :import
+        get '/import_view', to: 'rewards#import_view'
+      end
+    end
     resources :categories
   end
 

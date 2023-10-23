@@ -70,5 +70,19 @@ RSpec.describe 'Reward CRUD actions', type: :system do
       visit employees_orders_path
       expect(page).to have_content employee_order_price
     end
+
+    it 'import a csv file' do
+      visit '/admins/rewards/import_view'
+      attach_file('file', Rails.root.join('spec/fixtures/rewards.csv'))
+      click_button 'Import'
+      expect(page).to have_content 'Import completed'
+    end
+
+    it 'import a wrong type file' do
+      visit '/admins/rewards/import_view'
+      attach_file('file', Rails.root.join('spec/fixtures/rewards.txt'))
+      click_button 'Import'
+      expect(page).to have_content 'Only CSV files allowed'
+    end
   end
 end

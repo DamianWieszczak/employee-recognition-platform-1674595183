@@ -44,6 +44,22 @@ module Admins
       redirect_to admins_rewards_path
     end
 
+    def import_view; end
+
+    def import
+      return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+
+      unless params[:file].content_type == 'text/csv'
+        return redirect_to request.referer,
+                           alert: 'Only CSV files allowed'
+      end
+
+      ImportCsvService.new.call(params[:file])
+      redirect_to request.referer, notice: 'Import completed'
+    rescue StandardError => e
+      flash[:alert] = e.message
+    end
+
     private
 
     def reward_params
