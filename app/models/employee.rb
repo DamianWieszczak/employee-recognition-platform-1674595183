@@ -8,6 +8,9 @@ class Employee < ApplicationRecord
   has_many :given_kudos, class_name: 'Kudo', foreign_key: 'giver_id', dependent: :destroy, inverse_of: :giver
   has_many :orders, dependent: :destroy, inverse_of: :employee
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   private
 
   def password_required?

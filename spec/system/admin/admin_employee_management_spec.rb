@@ -18,6 +18,8 @@ RSpec.describe 'management of employees by admin', type: :system do
       visit admins_employees_path
       click_link 'Edit'
       fill_in 'Email', with: employee.email
+      fill_in 'First name', with: employee.first_name
+      fill_in 'Last name', with: employee.last_name
       fill_in 'Number of available kudos', with: 2
       click_button 'Update Employee'
       expect(page).to have_content 'Employee account was successfully updated'
