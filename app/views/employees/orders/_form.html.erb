@@ -1,0 +1,30 @@
+<%= form_with(model: [:employees, order]) do |form| %>
+<%= render 'shared/errors', object: order %> 
+
+  <%= form.hidden_field :reward_id, value: @reward.id %>
+  <% if @reward.delivery_method == 'post_delivery'%>
+    <h5>Add a address:</h5>
+    <%= form.fields_for :address do |f| %>
+      <div class="field form-group">
+        <%= f.label :street %><br>
+        <%= f.text_field :street, value: current_employee.orders.last.address.present? ? current_employee.orders.last.address.street : 'street', class:"form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :postcode %><br>
+        <%= f.text_field :postcode, value: current_employee.orders.last.address.present? ? current_employee.orders.last.address.postcode : 'postcode', class:"form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :city %><br>
+        <%= f.text_field :city, value: current_employee.orders.last.address.present? ? current_employee.orders.last.address.city : 'city', class:"form-control" %>
+      </div>
+    <% end %>
+    <br>
+    <div class="action">
+      <%= link_to 'Back', employees_rewards_path, class:'btn btn-secondary btn-sm' %>
+      <%= form.submit "Post Delviery", class:"bi bi-mailbox btn btn-outline-success btn-sm"%>
+    </div>
+    <% else %>
+      <%= link_to 'Back', employees_rewards_path, class:'btn btn-secondary btn-sm' %>
+      <%= link_to 'Online Delivery', employees_orders_path(reward: @reward), method: :post, class:"bi bi-bag-plus btn btn-outline-success btn-sm" %>
+  <% end %>
+<% end %>

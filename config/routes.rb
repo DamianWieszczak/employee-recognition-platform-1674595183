@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   
   namespace :employees do
     resources :kudos
-    resources :rewards, only: [:index, :show]
-    resources :orders, only: [:index, :create]
+    resources :rewards, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :new, :create]
     get 'rewards/category/:id', to: 'categories#show', as: 'reward_category'
   end
   

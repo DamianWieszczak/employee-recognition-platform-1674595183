@@ -2,7 +2,7 @@ module Admins
   class OrdersController < AdminsController
     def index
       @employee = Employee.find(params[:employee_id])
-      @orders = Order.all.includes(:employee).order(status: :asc)
+      @orders = Order.all.includes(:employee, :address).order(status: :asc)
     end
 
     def update
