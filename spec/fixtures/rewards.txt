@@ -1,4 +1,4 @@
-Title;Description;Category;Price
-Example;Example;Category;200
-Test;Test;Category;300
-Test2;Test2;Category;400
+Title;Description;Category;Price;Delivery method
+Example;Example;Category;200;post_delivery
+Test;Test;Category;300;post_delivery
+Test2;Test2;Category;400;post_delivery

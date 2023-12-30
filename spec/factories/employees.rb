@@ -5,6 +5,6 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     password { 'password' }
     number_of_available_kudos { 10 }
-    number_of_earned_points { 60 }
+    number_of_earned_points { 120 }
   end
 end

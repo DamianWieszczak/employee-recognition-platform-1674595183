@@ -23,15 +23,14 @@ module Employees
         reward = Reward.find(params[:reward])
         if current_employee.number_of_earned_points < reward.price
           flash[:alert] = 'You dont have enough points to buy a reward'
-          redirect_to employees_rewards_path
         else
-          order = Order.new(employee: current_employee, reward: reward)
+          order = Order.new(employee: current_employee, reward:)
           order.price = order.reward.price
           order.save!
           current_employee.update!(number_of_earned_points: current_employee.number_of_earned_points - reward.price)
           flash[:notice] = 'You have successfully purchased a reward'
-          redirect_to employees_rewards_path
         end
+        redirect_to employees_rewards_path
 
       else
         @reward = Reward.find(params[:order][:reward_id])
@@ -55,7 +54,8 @@ module Employees
     end
 
     def order_params
-      params.require(:order).permit(:employee_id, :reward_id, :reward_data, address_attributes: %i[street postcode city])
+      params.require(:order).permit(:employee_id, :reward_id, :reward_data,
+                                    address_attributes: %i[street postcode city])
     end
   end
 end

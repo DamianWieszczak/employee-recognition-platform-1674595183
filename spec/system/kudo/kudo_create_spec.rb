@@ -14,6 +14,6 @@ RSpec.describe 'Create Kudo test' do
     click_button 'Create Kudo'
     employee.number_of_earned_points += 10
     expect(page).to have_content 'Kudo was successfully created'
-    expect(page).to have_content 'Your Earned Points: {70}'
+    expect(page).to have_content 'Your Earned Points: {130}'
   end
 end
