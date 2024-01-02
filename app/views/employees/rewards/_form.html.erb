@@ -1,0 +1,12 @@
+<%= form_with(model: [:employees, reward]) do |form| %>
+  <%= render 'shared/errors', object: reward %> 
+
+  <div class="field">
+    <%= form.label :delivery_method, class: "form-label" %>
+    <%= form.select :delivery_method, Reward.delivery_methods.keys %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Reward", class: "btn btn-outline-dark" %><br>
+  </div>
+<% end %>

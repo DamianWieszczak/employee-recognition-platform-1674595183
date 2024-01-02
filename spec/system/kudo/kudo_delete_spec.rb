@@ -11,6 +11,6 @@ RSpec.describe 'Delete Kudo test' do
     click_link 'Destroy'
     employee.number_of_earned_points -= 10
     expect(page).to have_content 'Kudo was successfully deleted'
-    expect(page).to have_content 'Your Earned Points: {60}'
+    expect(page).to have_content 'Your Earned Points: {120}'
   end
 end

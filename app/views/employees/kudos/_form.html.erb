@@ -1,5 +1,5 @@
 <%= form_with(model: [:employees, kudo]) do |form| %>
-  <%= render 'employees/kudos/errors', kudo: kudo %> 
+  <%= render 'shared/errors', object: kudo %> 
 
   <div class="field">
     <%= form.label :title, class: "form-label" %>

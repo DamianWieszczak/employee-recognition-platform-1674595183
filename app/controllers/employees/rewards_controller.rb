@@ -8,10 +8,25 @@ module Employees
       @reward = Reward.find(params[:id])
     end
 
+    def edit
+      @reward = Reward.find(params[:id])
+    end
+
+    def update
+      @reward = Reward.find(params[:id])
+      if @reward.update(reward_params)
+        flash[:notice] = 'Reward was updated'
+        redirect_to employees_rewards_path
+      else
+        flash[:alert] = 'Updating Reward failed'
+        render :edit
+      end
+    end
+
     private
 
-    def set_reward
-      params.require(:reward).permit(:title, :description, :price, :category_id, :image)
+    def reward_params
+      params.require(:reward).permit(:title, :description, :price, :category_id, :image, :delivery_method)
     end
   end
 end

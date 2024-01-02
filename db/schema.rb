@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_26_214621) do
+ActiveRecord::Schema.define(version: 2023_12_25_121506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 2023_11_26_214621) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street", null: false
+    t.string "postcode", null: false
+    t.string "city", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "order_id", null: false
+    t.index ["order_id"], name: "index_addresses_on_order_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -104,6 +114,7 @@ ActiveRecord::Schema.define(version: 2023_11_26_214621) do
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price", precision: 8, scale: 2, null: false
     t.integer "status", default: 0
+    t.text "reward_data"
     t.index ["employee_id"], name: "index_orders_on_employee_id"
     t.index ["reward_id"], name: "index_orders_on_reward_id"
   end
@@ -115,11 +126,13 @@ ActiveRecord::Schema.define(version: 2023_11_26_214621) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
+    t.integer "delivery_method", default: 0
     t.index ["category_id"], name: "index_rewards_on_category_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "orders"
   add_foreign_key "kudos", "company_values"
   add_foreign_key "kudos", "employees", column: "giver_id"
   add_foreign_key "kudos", "employees", column: "receiver_id"

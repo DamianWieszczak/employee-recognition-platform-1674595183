@@ -60,6 +60,7 @@ RSpec.describe 'Reward CRUD actions', type: :system do
       login_as(employee, scope: :employee)
       visit employees_rewards_path
       click_link 'Buy'
+      click_link 'Online Delivery'
       employee_order_price = reward.price
       login_as(admin, scope: :admin)
       visit admins_rewards_path
@@ -83,6 +84,16 @@ RSpec.describe 'Reward CRUD actions', type: :system do
       attach_file('file', Rails.root.join('spec/fixtures/rewards.txt'))
       click_button 'Import'
       expect(page).to have_content 'Only CSV files allowed'
+    end
+
+    it 'Checks if admin can choose delivery method for reward' do
+      login_as(admin, scope: :admin)
+      visit admins_rewards_path
+      click_link 'Edit'
+      page.select 'post_delivery', from: 'reward_delivery_method'
+      fill_in 'Price', with: rand(1..999)
+      click_button 'Update Reward'
+      expect(page).to have_text 'Reward was updated'
     end
   end
 end

@@ -6,4 +6,5 @@ class Reward < ApplicationRecord
   validates :image, content_type: ['image/png', 'image/jpeg']
   has_many :orders, dependent: :destroy, inverse_of: :reward
   belongs_to :category
+  enum delivery_method: { online: 0, post_delivery: 1 }
 end

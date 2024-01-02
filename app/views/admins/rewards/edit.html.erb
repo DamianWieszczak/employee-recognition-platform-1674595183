@@ -23,12 +23,17 @@
     <%= form.collection_select(:category_id, Category.all, :id, :title) %>
   </div>
 
+  <div class="field">
+    <%= form.label :delivery_method, class: "form-label" %>
+    <%= form.select :delivery_method, Reward.delivery_methods.keys %>
+  </div>
+
   <div>
     <%= form.label :image, class: "form-label" %>
     <%= form.file_field :image, class: "form-control" %>
   </div>
   
   <div class="actions">
-    <%= form.submit 'Update', class: "btn btn-outline-dark" %>
+    <%= form.submit "Update Reward" , class: "btn btn-outline-dark" %>
   </div>
 <% end %>
