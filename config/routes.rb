@@ -23,11 +23,19 @@ Rails.application.routes.draw do
     namespace :employees do
       resources :orders, only: [:index, :update]
     end
+
     resources :company_values
     resources :rewards do
       collection do
         post :import
         get '/import_view', to: 'rewards#import_view'
+      end
+    end
+
+    resources :online_codes do
+      collection do
+        post :import
+        get '/import_online_codes', to: 'online_codes#import_online_codes'
       end
     end
     resources :categories

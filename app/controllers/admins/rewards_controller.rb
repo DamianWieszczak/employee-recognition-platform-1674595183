@@ -1,7 +1,7 @@
 module Admins
   class RewardsController < AdminsController
     def index
-      @pagy, @rewards = pagy(Reward.all, items: 3)
+      @pagy, @rewards = pagy(Reward.all, items: 5)
     end
 
     def new
@@ -63,7 +63,7 @@ module Admins
     private
 
     def reward_params
-      params.require(:reward).permit(:title, :description, :price, :category_id, :image, :delivery_method)
+      params.require(:reward).permit(:title, :description, :price, :category_id, :image, :delivery_method, :available_rewards, online_codes_attributes: %i[code used id _destroy])
     end
   end
 end

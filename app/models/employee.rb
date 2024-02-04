@@ -11,6 +11,14 @@ class Employee < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  def post_delivery?
+    reward.delivery_method == 'post_delivery'
+  end
+
+  def online_delivery?
+    reward.delivery_method == 'online'
+  end
+
   private
 
   def password_required?

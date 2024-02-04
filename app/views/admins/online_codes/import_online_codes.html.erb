@@ -1,0 +1,6 @@
+<h1>Import a CSV File with Online Codes</h1>
+
+<%= form_with url:  import_admins_online_codes_path, method: :post, multipart: true do |f| %>
+  <%= f.file_field :file, accept: ".csv" %>
+  <%= f.button "Import", class: "btn btn-primary" %>
+<% end %>

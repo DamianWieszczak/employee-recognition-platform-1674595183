@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_25_121506) do
+ActiveRecord::Schema.define(version: 2024_02_01_182422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,15 @@ ActiveRecord::Schema.define(version: 2023_12_25_121506) do
     t.index ["receiver_id"], name: "index_kudos_on_receiver_id"
   end
 
+  create_table "online_codes", force: :cascade do |t|
+    t.string "code"
+    t.boolean "used", default: false
+    t.bigint "reward_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reward_id"], name: "index_online_codes_on_reward_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "employee_id", null: false
     t.bigint "reward_id", null: false
@@ -127,6 +136,7 @@ ActiveRecord::Schema.define(version: 2023_12_25_121506) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
     t.integer "delivery_method", default: 0
+    t.integer "available"
     t.index ["category_id"], name: "index_rewards_on_category_id"
   end
 
@@ -136,6 +146,7 @@ ActiveRecord::Schema.define(version: 2023_12_25_121506) do
   add_foreign_key "kudos", "company_values"
   add_foreign_key "kudos", "employees", column: "giver_id"
   add_foreign_key "kudos", "employees", column: "receiver_id"
+  add_foreign_key "online_codes", "rewards"
   add_foreign_key "orders", "employees"
   add_foreign_key "orders", "rewards"
   add_foreign_key "rewards", "categories"

@@ -25,6 +25,10 @@ gem 'devise'
 gem 'faker'
 gem 'pagy', '~> 6.0'
 gem 'pundit'
+gem 'simple_form'
+gem 'jquery-rails'
+gem 'cocoon', '~> 1.2'
+gem 'securerandom'
 
 group :development, :test do
   # Debugging tool

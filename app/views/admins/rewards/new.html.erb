@@ -18,6 +18,16 @@
     <%= form.number_field :price, value: number_to_currency(form.object.price.to_f, unit: '$'), step: :any, class: "form-control" %>
   </div>
 
+  <div class="field">
+    <%= form.label :delivery_method, class: "form-label" %>
+    <%= form.collection_select :delivery_method, Reward.delivery_methods.keys, :to_s, :humanize, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Available/Quantity', class: "form-label" %>
+    <%= form.collection_select :available, class: "form-control" %>
+  </div>
+
   <div class="form-check">
     <%= form.label :categories, class: "form-check-label" %>
     <%= form.collection_select(:category_id, Category.all, :id, :title) %>
