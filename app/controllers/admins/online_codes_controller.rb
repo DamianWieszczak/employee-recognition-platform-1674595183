@@ -9,7 +9,7 @@ module Admins
       online_code = OnlineCode.new
       render :new, locals: { online_code: }
     end
-    
+
     def create
       online_code = OnlineCode.new(online_code_params)
       if online_code.save

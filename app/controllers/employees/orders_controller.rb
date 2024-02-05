@@ -31,7 +31,6 @@ module Employees
           flash[:notice] = 'You have successfully purchased a reward'
         end
         redirect_to employees_rewards_path
-
       else
         @reward = Reward.find(params[:order][:reward_id])
         if current_employee.number_of_earned_points < @reward.price

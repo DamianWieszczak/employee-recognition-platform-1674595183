@@ -63,7 +63,8 @@ module Admins
     private
 
     def reward_params
-      params.require(:reward).permit(:title, :description, :price, :category_id, :image, :delivery_method, :available_rewards, online_codes_attributes: %i[code used id _destroy])
+      params.require(:reward).permit(:title, :description, :price, :category_id, :image, :delivery_method,
+                                     :available_rewards, online_codes_attributes: %i[code used id _destroy])
     end
   end
 end

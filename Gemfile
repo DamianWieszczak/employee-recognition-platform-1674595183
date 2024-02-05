@@ -21,14 +21,14 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'active_storage_validations'
 gem 'bullet'
 gem 'cloudinary'
+gem 'cocoon', '~> 1.2'
 gem 'devise'
 gem 'faker'
+gem 'jquery-rails'
 gem 'pagy', '~> 6.0'
 gem 'pundit'
-gem 'simple_form'
-gem 'jquery-rails'
-gem 'cocoon', '~> 1.2'
 gem 'securerandom'
+gem 'simple_form'
 
 group :development, :test do
   # Debugging tool
