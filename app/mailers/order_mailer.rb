@@ -8,4 +8,9 @@ class OrderMailer < ApplicationMailer
     @order = params[:order]
     mail(to: @order.employee.email, subject: 'Your online code is below:')
   end
+
+  def mail_pick_up_delivery
+    @order = params[:order]
+    mail(to: @order.employee.email, subject: 'Your order will be processed using pick-up delivery')
+  end
 end

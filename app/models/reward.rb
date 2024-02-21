@@ -8,7 +8,7 @@ class Reward < ApplicationRecord
   belongs_to :category
   has_many :online_codes, dependent: :destroy, inverse_of: :reward
   accepts_nested_attributes_for :online_codes, allow_destroy: true
-  enum delivery_method: { online: 0, post_delivery: 1 }
+  enum delivery_method: { online: 0, post_delivery: 1, pick_up_delivery: 2 }
 
   def build_online_codes(available_rewards)
     available_rewards.times { online_codes.build }
@@ -16,6 +16,10 @@ class Reward < ApplicationRecord
 
   def online_delivery?
     delivery_method == 'online'
+  end
+
+  def pick_up_delivery?
+    delivery_method == 'pick_up_delivery'
   end
 
   def available_rewards_index
