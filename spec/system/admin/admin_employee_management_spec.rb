@@ -28,7 +28,7 @@ RSpec.describe 'management of employees by admin', type: :system do
     it 'deleting employee account' do
       visit admins_employees_path
       click_link 'Delete Employee'
-      expect(page).to have_content 'Employee acoount was successfully deleted'
+      expect(page).to have_content 'Employee acount was successfully deleted'
     end
   end
 end
