@@ -44,7 +44,7 @@ module Admins
     def destroy
       @employee = Employee.find(params[:id])
       if @employee.destroy
-        flash[:notice] = 'Employee acount was successfully deleted'
+        flash[:notice] = 'Employee acoount was successfully deleted'
       else
         flash[:alert] = 'Delete Employee account failed'
       end

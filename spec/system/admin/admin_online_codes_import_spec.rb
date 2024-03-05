@@ -11,7 +11,7 @@ RSpec.describe 'Importing online codes', type: :system do
 
   it 'imports online codes and displays messages' do
     visit import_online_codes_admins_online_codes_path
-    attach_file('file', Rails.root.join('spec/fixtures/online_codes_valid.csv'))
+    attach_file('file', Rails.root.join('spec/fixtures/files/valid_online_codes.csv'))
     click_button('Import')
     expect(page).to have_content('Import completed')
   end
