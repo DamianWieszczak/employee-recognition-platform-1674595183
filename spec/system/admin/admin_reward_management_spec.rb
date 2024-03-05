@@ -90,7 +90,7 @@ RSpec.describe 'Reward CRUD actions', type: :system do
       login_as(admin, scope: :admin)
       visit admins_rewards_path
       click_link 'Edit'
-      page.select 'post_delivery', from: 'reward_delivery_method'
+      page.select 'post_delivery', from: 'delivery_method'
       fill_in 'Price', with: rand(1..999)
       click_button 'Update Reward'
       expect(page).to have_text 'Reward was updated'

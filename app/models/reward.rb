@@ -26,7 +26,7 @@ class Reward < ApplicationRecord
     if online_delivery?
       online_codes.where(used: false).count
     else
-      available_rewards
+      available
     end
   end
 end
